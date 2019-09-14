@@ -1,0 +1,26 @@
+﻿@model IEnumerable<MyFirstMVC.Models.Project>
+<h4>Projelerim</h4>
+<div class="row my-2">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4">
+            <div class="card d-block" style="height: 380px;">
+                
+                <img src="/images/@item.Photo" alt="@item.Title">
+                <div class="card-body">
+                    <h5 class="card-title">@item.Title</h5>
+                    <p class="card-text">
+                       @item.Description
+                    </p>
+                    <a href="#" class="btn btn-primary" style="position: absolute; bottom: 10px; right: 15px;">Detaylar</a>
+                </div>
+            </div>
+        </div>
+    }
+    @if (Model.Count() == 0)
+    {
+        <div class="col-md-12">
+            <div class="alert alert-danger">Hiç Proje Yok!</div>
+        </div>
+    }
+</div>

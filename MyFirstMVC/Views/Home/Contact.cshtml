@@ -1,0 +1,74 @@
+﻿@model MyFirstMVC.Models.ContactViewModel
+<h4>İletişim</h4>
+<div class="row my-2">
+    <div class="col-md-6">
+
+        @using (Html.BeginForm())
+        {
+            
+            if (!string.IsNullOrEmpty(ViewBag.Error))
+            {
+                <div class="alert alert-danger">@ViewBag.Error</div>
+            }
+            if (!string.IsNullOrEmpty(ViewBag.Message))
+            {
+                <div class="alert alert-success">@ViewBag.Message</div>
+            }
+            @Html.ValidationSummary(false)
+            <div class="form-group row">
+                @Html.LabelFor(model => model.firstName, new { @class = "col-md-2 col-form-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.firstName, new { @class = "form-control", placeholder = "Adınız" })
+                    @Html.ValidationMessageFor(model => model.firstName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row">
+                @Html.LabelFor(model => model.lastName, new { @class = "col-md-2 col-form-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.lastName, new { @class = "form-control", placeholder = "Soyadınız" })
+                    @Html.ValidationMessageFor(model => model.lastName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Telephone, new { @class = "col-md-2 col-form-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.Telephone, new { @class = "form-control", placeholder = "Telefon Numaranız" })
+                    @Html.ValidationMessageFor(model => model.Telephone, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Email, new { @class = "col-md-2 col-form-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control", placeholder = "Emailiniz" })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Message, new { @class = "col-md-2 col-form-label" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(model => model.Message, new { @class = "form-control", placeholder = "Mesajınız" })
+                    @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-10 offset-md-2">
+                    <button type="submit" id="butonSubmit " class="btn btn-primary">Gönder</button>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-10 offset-md-2">
+                    @Html.CheckBoxFor(model => model.PrivacyPolicyAccepted)
+                    <label for="PrivacyPolicyAccepted">
+                        <a href="@Url.Action("Kvkk", "Home")" style="color: blue" target="_blank">KVKK Aydınlatma Metnini okudum ve kabul ediyorum. </a>
+                    </label>
+                    @Html.ValidationMessageFor(model => model.PrivacyPolicyAccepted, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        }
+    </div>
+    <div class="col-md-6">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d752.1082750594564!2d28.79967982919744!3d41.059524709936106!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14caa5bd2167eb59%3A0x54873a4376346d91!2zTWVobWV0IEFraWYsIFXEn3VyIFNrLiBObzo1NCwgMzQzMDcgS8O8w6fDvGvDp2VrbWVjZS_EsHN0YW5idWw!5e0!3m2!1str!2str!4v1563446999942!5m2!1str!2str"
+                width="100%" height="87%" frameborder="0" style="border:0" allowfullscreen></iframe>
+    </div>
+
+</div>
